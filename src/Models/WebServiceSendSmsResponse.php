@@ -10,7 +10,7 @@ namespace smsSquad\Models;
 
 require_once (dirname(__DIR__) . '/helpers.php');
 
-class WebServiceSendSmsResponse
+class WebServiceSendSmsResponse extends BaseModel
 {
     public $messageId;
     public $error;
@@ -21,11 +21,11 @@ class WebServiceSendSmsResponse
         $this->error        = $error;
     }
 
-    public static function newFromJSON($jsonString)
+    public static function newFromResponse(RequestResponse $response)
     {
-        if (empty($jsonString) || $jsonString == 'null') return null;
+        if (empty($response->response_body) || $response->response_body == 'null') return null;
 
-        $object = json_decode($jsonString);
+        $object = json_decode($response->response_body);
 
         return new self(
             ifset($object->messageId),

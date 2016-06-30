@@ -11,8 +11,17 @@ namespace smsSquad\Exception;
 
 class ValidationException extends \Exception
 {
-    public function __construct($message, $code, \Exception $previous = null)
+    public $restErrorDTO;
+    
+    public function __construct($message, $code, \Exception $previous = null, $restError = null)
     {
+        $this->restErrorDTO = $restError;
+
         parent::__construct($message, $code, $previous);
+    }
+
+    public function getRestError()
+    {
+        return $this->restErrorDTO;
     }
 }

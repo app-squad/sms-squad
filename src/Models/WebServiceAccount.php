@@ -22,7 +22,7 @@ class WebServiceAccount extends BaseModel
         $this->response         = $response;
     }
 
-    public static function newFromJSON(RequestResponse $response)
+    public static function newFromResponse(RequestResponse $response)
     {
         if (empty($response->response_body) || $response->response_body == 'null') return null;
 

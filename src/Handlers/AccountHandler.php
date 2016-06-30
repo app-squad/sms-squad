@@ -30,12 +30,12 @@ class AccountHandler extends BaseHandler
 
         if ($this->responseGood()) {
 
-            return WebServiceAccount::newFromJSON($this->response);
+            return WebServiceAccount::newFromResponse($this->response);
 
         } else {
 
             return null;
-        
+
         }
     }
 

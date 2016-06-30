@@ -11,6 +11,7 @@ namespace smsSquad\Handlers;
 
 use smsSquad\Exception\ServerException;
 use smsSquad\Exception\ValidationException;
+use smsSquad\Models\RestErrorDTO;
 
 class BaseHandler
 {
@@ -18,23 +19,26 @@ class BaseHandler
     
     protected function responseGood()
     {
-        if ($this->response->response_code == 200) {
+        $sc = $this->response->response_code;
+        
+        if ($sc == 200) {
 
             return true;
 
-        } elseif ($this->response->response_code == 400) {
+        } elseif ($sc == 400) {
 
-            throw new ValidationException('Validation Error', 400);
+            $restError  = RestErrorDTO::newFromResponse($this->response);
+            throw new ValidationException('Validation Error', 400, null, $restError);
 
-        } elseif ($this->response->response_code == 401) {
+        } elseif ($sc == 401) {
 
             throw new ValidationException('Unauthorised', 401);
 
-        } elseif ($this->response->response_code == 403) {
+        } elseif ($sc == 403) {
 
             throw new ValidationException('Forbidden', 403);
 
-        } elseif ($this->response->response_code == 404) {
+        } elseif ($sc == 404) {
 
             throw new ValidationException('Not Found', 404);
 

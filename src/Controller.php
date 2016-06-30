@@ -9,6 +9,9 @@
 namespace smsSquad;
 
 
+use smsSquad\Handlers\AccountHandler;
+use smsSquad\Handlers\SmsHandler;
+
 class Controller
 {
     public $email;
@@ -28,6 +31,10 @@ class Controller
         $this->email        = $email;
         $this->token        = $token;
         $this->requester    = new Requester($email, $token);
+
+        $this->account      = new AccountHandler($this->requester);
+        $this->sms          = new SmsHandler($this->requester);
+
     }
-    
+
 }
