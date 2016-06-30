@@ -1,0 +1,18 @@
+{
+    "name": "app-squad/sms-squad",
+    "description": "sms-squad php interface",
+    "keywords": ["sms-squad", "php"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "smsSquad\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dev-master"
+    }
+}
