@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Willem
- * Date: 2016-06-30
- * Time: 11:29 AM
- */
 
 namespace smsSquad\Models;
 
 require_once (dirname(__DIR__) . '/helpers.php');
 
-class WebServiceMessage
+class WebServiceMessage extends BaseModel
 {
     public $messageId;
     public $contact;
@@ -30,13 +24,18 @@ class WebServiceMessage
     public $message;
     public $links;
 
-    public function __construct() {}
-
-    public static function newFromJSON($jsonString)
+    public function __construct($response)
     {
-        $object = json_decode($jsonString);
+        $this->response = $response;
+    }
 
-        $message = new self();
+    public static function newFromResponse(RequestResponse $response)
+    {
+        if (empty($response->response_body) || $response->response_body == 'null') return null;
+
+        $object = json_decode($response->response_body);
+
+        $message = new self($response);
         $message->messageId             = ifset($object->messageId);
         $message->messageType           = ifset($object->messageType);
         $message->fromNumber            = ifset($object->fromNumber);

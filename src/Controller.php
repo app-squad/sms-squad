@@ -10,6 +10,7 @@ namespace smsSquad;
 
 
 use smsSquad\Handlers\AccountHandler;
+use smsSquad\Handlers\MessageHandler;
 use smsSquad\Handlers\SmsHandler;
 
 class Controller
@@ -34,8 +35,8 @@ class Controller
 
         $this->account      = new AccountHandler($this->requester);
         $this->sms          = new SmsHandler($this->requester);
+        $this->messages     = new MessageHandler($this->requester);
 
-        
     }
 
 }

@@ -15,10 +15,11 @@ class WebServiceSendSmsResponse extends BaseModel
     public $messageId;
     public $error;
 
-    public function __construct($messageId, $error)
+    public function __construct($messageId, $error, $response)
     {
         $this->messageId    = $messageId;
         $this->error        = $error;
+        $this->response = $response;
     }
 
     public static function newFromResponse(RequestResponse $response)
@@ -29,7 +30,8 @@ class WebServiceSendSmsResponse extends BaseModel
 
         return new self(
             ifset($object->messageId),
-            ifset($object->error)
+            ifset($object->error),
+            $response
         );
     }
 }
