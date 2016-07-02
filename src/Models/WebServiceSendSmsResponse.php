@@ -19,7 +19,7 @@ class WebServiceSendSmsResponse extends BaseModel
     {
         $this->messageId    = $messageId;
         $this->error        = $error;
-        $this->response = $response;
+        $this->response     = $response;
     }
 
     public static function newFromResponse(RequestResponse $response)

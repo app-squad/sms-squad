@@ -9,7 +9,7 @@
 namespace smsSquad;
 
 
-use smsSquad\Exception\CommunicationsException;
+use smsSquad\Exceptions\CommunicationsException;
 use smsSquad\Models\RequestResponse;
 
 class Requester

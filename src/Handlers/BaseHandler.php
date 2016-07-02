@@ -9,8 +9,8 @@
 namespace smsSquad\Handlers;
 
 
-use smsSquad\Exception\ServerException;
-use smsSquad\Exception\ValidationException;
+use smsSquad\Exceptions\ServerException;
+use smsSquad\Exceptions\ValidationException;
 use smsSquad\Models\RestErrorDTO;
 
 class BaseHandler
@@ -20,7 +20,7 @@ class BaseHandler
     protected function responseGood()
     {
         $sc = $this->response->response_code;
-        
+
         if ($sc == 200) {
 
             return true;

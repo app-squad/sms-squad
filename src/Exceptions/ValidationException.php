@@ -6,7 +6,7 @@
  * Time: 11:20 AM
  */
 
-namespace smsSquad\Exception;
+namespace smsSquad\Exceptions;
 
 
 class ValidationException extends \Exception

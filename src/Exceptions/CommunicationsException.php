@@ -6,7 +6,7 @@
  * Time: 11:15 AM
  */
 
-namespace smsSquad\Exception;
+namespace smsSquad\Exceptions;
 
 
 class CommunicationsException extends \Exception

@@ -6,7 +6,7 @@
  * Time: 11:25 AM
  */
 
-namespace smsSquad\Exception;
+namespace smsSquad\Exceptions;
 
 
 class ServerException extends \Exception
